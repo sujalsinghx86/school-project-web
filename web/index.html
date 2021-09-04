@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="overlay"></div>
+<div class="main-container">
+    <h1 class="typed-text extra-bold">Hi There!</h1>
+    <p class="typed-text regular">Looks like you are using our browser for the first time!</p>
+    <h1 class="typed-text bold white">Let's get you started</h1>
+
+    <form onsubmit="form1_submit(this);" class="input-form1" action="#">
+        <p class="typed-text centered bold">Let's get you an account</p>
+        <label>
+            <!--suppress HtmlDeprecatedAttribute -->
+            <input type="text" class="form1-input input-box" placeholder="First name" required
+                   onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode === 32))'>
+        </label>
+        <label>
+            <!--suppress HtmlDeprecatedAttribute -->
+            <input type="text" class="form1-input input-box" placeholder="Last name" required
+                   onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode === 32))'>
+        </label>
+        <label>
+            <input type="email" class="form1-input input-box" placeholder="Email" required>
+        </label>
+        <input type="submit" class="form1-input submit-btn">
+    </form>
+
+    <div class="form2">
+        <p class="typed-text centered bold">
+            Which engine would you like to use?
+        </p>
+        <div id="chromium" class="choice checked form2-input" onclick="radio_click(this);">
+            Chromium uses the blink and v8 engines. It supports pretty much the entire web!
+        </div>
+        <div id="skylon" class="choice unchecked form2-input" onclick="radio_click(this);">
+            Skylon is a tiny engine, it's built by us to bring python to the web.
+        </div>
+
+        <input type="submit" class="form2-input submit-btn" onclick="form2_submit(this)">
+
+        <p class="typed-text centered long-desc">
+            NOTE: Skylon's development began in July of this year, other engines have been here for decades.
+            Therefore, skylon does not support, well pretty much anything besides text.
+        </p>
+    </div>
+
+</div>
+<script src="main.js"></script>
+</body>
+</html>
