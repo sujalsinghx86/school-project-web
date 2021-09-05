@@ -111,8 +111,9 @@ async function form2_submit(form) {
     body.style.opacity = "0"
     await sleep(5000)
 
-    // call python functions here
+    // PYTHON FUNCTIONS HERE
     create_user(firstName, lastName, email, engineChoice);
+    close_browser();
 }
 
 
