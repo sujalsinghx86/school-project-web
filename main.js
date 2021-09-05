@@ -67,7 +67,7 @@ async function animate() {
 animate()
 
 
-async function form1_submit(form) {
+async function form1_submit() {
     let inputs = document.getElementsByClassName("form1-input")
     firstName = inputs[0].value
     lastName = inputs[1].value
@@ -78,23 +78,27 @@ async function form1_submit(form) {
     inputs[3].style.display = "none";
     document.getElementsByClassName("typed-text")[3].style.display = "none"
 
-    await sleep(10)
-    let t = document.getElementsByClassName("typed-text")
-    let r = document.getElementsByClassName("form2-input")
-    await initTypedElement(t[4])
+    if (!user_exists(firstName, lastName, email)) {
+        await sleep(10)
+        let t = document.getElementsByClassName("typed-text")
+        let r = document.getElementsByClassName("form2-input")
+        await initTypedElement(t[4])
 
-    r[0].style.display = "block"
-    r[1].style.animationDelay = "0.5s"
-    r[1].style.display = "block"
-    r[2].style.minWidth = "30%"
-    r[2].style.animationDelay = "1s"
-    r[2].style.display = "block"
-    await sleep(1000)
-    await initTypedElement(t[5])
+        r[0].style.display = "block"
+        r[1].style.animationDelay = "0.5s"
+        r[1].style.display = "block"
+        r[2].style.minWidth = "30%"
+        r[2].style.animationDelay = "1s"
+        r[2].style.display = "block"
+        await sleep(1000)
+        await initTypedElement(t[5])
+    } else {
+        await form2_submit();
+    }
 }
 
 
-async function form2_submit(form) {
+async function form2_submit() {
     console.log(firstName, lastName, email, engineChoice)
 
     let body = document.getElementsByTagName("body")[0]
