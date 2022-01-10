@@ -67,18 +67,8 @@ async function animate() {
 animate()
 
 
-async function form1_submit() {
-    let inputs = document.getElementsByClassName("form1-input")
-    firstName = inputs[0].value
-    lastName = inputs[1].value
-    email = inputs[2].value
-    inputs[0].style.display = "none";
-    inputs[1].style.display = "none";
-    inputs[2].style.display = "none";
-    inputs[3].style.display = "none";
-    document.getElementsByClassName("typed-text")[3].style.display = "none"
-
-    if (!user_exists(firstName, lastName, email)) {
+async function UpdateExistence(user_exists) {
+    if (!user_exists) {
         await sleep(10)
         let t = document.getElementsByClassName("typed-text")
         let r = document.getElementsByClassName("form2-input")
@@ -92,9 +82,24 @@ async function form1_submit() {
         r[2].style.display = "block"
         await sleep(1000)
         await initTypedElement(t[5])
+        create_user(firstName, lastName, email, engineChoice);
     } else {
         await form2_submit();
     }
+}
+
+async function form1_submit() {
+    let inputs = document.getElementsByClassName("form1-input")
+    firstName = inputs[0].value
+    lastName = inputs[1].value
+    email = inputs[2].value
+    inputs[0].style.display = "none";
+    inputs[1].style.display = "none";
+    inputs[2].style.display = "none";
+    inputs[3].style.display = "none";
+    document.getElementsByClassName("typed-text")[3].style.display = "none"
+
+    update_user_existence(firstName, lastName, email);
 }
 
 
@@ -116,7 +121,6 @@ async function form2_submit() {
     await sleep(5000)
 
     // PYTHON FUNCTIONS HERE
-    create_user(firstName, lastName, email, engineChoice);
     close_browser();
 }
 
