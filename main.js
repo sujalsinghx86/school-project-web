@@ -121,6 +121,7 @@ async function form2_submit() {
     await sleep(5000)
 
     // PYTHON FUNCTIONS HERE
+    cache_user(email);
     close_browser();
 }
 
